@@ -1,11 +1,11 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
-import * as theme from '../styles/styles'
+import { myTheme } from '../styles/styles'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={myTheme}>
       <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
