@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FooterInterface } from './index'
 
-const Wrapper = styled.section`
-    padding-top: 200px;
+const Wrapper = styled.section<FooterInterface>`
+    padding-top: ${p=>p.onlyFooter ? '0px !important' : '200px'};
     background: ${p=>p.theme.colors.black};
     & > div{
         &:nth-child(1){
@@ -14,6 +15,33 @@ const Wrapper = styled.section`
             padding: 25px 0px;
             & > div{
                 max-width: 250px !important;
+            }
+        }
+    }
+    ${p=>p.theme.media.tablet}{
+        padding-top: 100px;
+        padding-bottom: 40px;
+        & > div{
+            &:nth-child(1){
+                max-width: 1500px;
+                margin: auto;
+                width: 90%;
+                padding: 70px 20px 40px 20px;
+                flex-direction: row;
+                justify-content: space-between;
+                border-bottom: 1px solid rgba(255,255,255,.2);
+                & > div{
+                    max-width: 150px !important;
+                }
+            }
+        }
+    }
+    ${p=>p.theme.media.desktop}{
+        & > div{
+            &:nth-child(1){
+                & > div{
+                    max-width: 250px !important;
+                }
             }
         }
     }
@@ -34,6 +62,27 @@ const Nav = styled.nav`
         cursor: pointer;
         &:hover{
             opacity: .7;
+        }
+    }
+    ${p=>p.theme.media.tablet}{
+        width: auto;
+        max-width: unset;
+        border: none;
+        flex-direction: row;
+        padding: 0px;
+        margin: 0px;
+        & > a{
+            font-size: 1.1rem;
+            margin: 0px 15px;
+            &:last-child{
+                margin-right: 0px;
+            }
+        }
+    }
+    ${p=>p.theme.media.desktop}{
+        & > a{
+            font-size: 1.5rem;
+            margin: 0px 25px;
         }
     }
 `
@@ -59,12 +108,26 @@ const ContactSection = styled.div`
             }
         }
     }
+    ${p=>p.theme.media.tablet}{
+        max-width: 1500px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 90%;
+        margin: auto;
+        margin-top: 40px;
+        & > section{
+            text-align: left;
+        }
+    }
 
 `
 
-const SecondLevel = () => {
+
+
+const SecondLevel:React.FC<FooterInterface> = ({onlyFooter}) => {
     return (
-        <Wrapper>
+        <Wrapper onlyFooter={onlyFooter}>
             <div>
                 <Image src="/assets/shared/desktop/logo-light.png" width={404} height={54} alt="designo logo" />
                 <Nav>

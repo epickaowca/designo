@@ -35,9 +35,43 @@ const Wrapper = styled.section`
             }
         }
     }
+    ${p=>p.theme.media.tablet}{
+        transform: translateY(100px);
+        padding: 0px;
+        & > div{
+            max-width: 1500px;
+            width: 90%;
+            & > article{
+                max-width: 400px;
+                & > h1{
+                    line-height: 55px;
+                    font-size: 3.1rem;
+                }
+                & > p{
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+    ${p=>p.theme.media.desktop}{
+        & > div{
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+            padding: 60px;
+            & > article{
+                max-width: 500px;
+                & > h1{
+                    font-size: 2.5rem;
+                    line-height: 45px;
+                    max-width: 300px;
+                }
+            }
+        }
+    }
 `
 
-const GetInTouch = () => {
+const GetInTouch:React.FC = () => {
     return (
         <Wrapper>
             <div>

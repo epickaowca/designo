@@ -8,6 +8,7 @@ interface TitleProps {
 };
 
 const StyledHeader = styled.header<TitleProps>`
+    max-width: 1500px;
     position: relative;
     display: flex;
     flex-direction: column;
