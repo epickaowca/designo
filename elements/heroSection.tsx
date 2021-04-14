@@ -1,9 +1,11 @@
 import styled from 'styled-components'
-import Button from '../../elements/button'
+import Button from './button'
 import Image from 'next/image'
 
 
-const Wrapper = styled.section`
+type WrapperType = {designCase: boolean}
+
+const Wrapper = styled.section<WrapperType>`
     background: ${p=>p.theme.colors.peach};
     color: white;
     overflow: hidden;
@@ -57,25 +59,31 @@ const Wrapper = styled.section`
     ${p=>p.theme.media.desktop}{
         max-width: 1500px;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: ${p=>p.designCase ? 'center' : 'space-between'};
         padding: 50px 0px;
         & > article{
             max-width: 600px;
             padding-left: 70px;
-            text-align: left;
+            text-align: ${p=>p.designCase ? 'center' : 'left'};
         }
     }
 `
 
-const heroSection = () => {
+interface HeroSectionInterface {
+    designCase?: boolean
+    header: string
+    paragraf: string
+}
+
+const heroSection:React.FC<HeroSectionInterface> = ({designCase, header, paragraf}) => {
     return (
-        <Wrapper>
+        <Wrapper designCase={designCase}>
             <article>
-                <h1>Award-winning custom designs and digital branding solutions</h1>
-                <p>With over 10 years in the industry, we are experienced in creating fully responsive websites, app design, and engaging brand experiences. Find out more about our services.</p>
-                <Button content="learn more" />
+                <h1>{header}</h1>
+                <p>{paragraf}</p>
+                {!designCase && <Button content="learn more" />}
             </article>
-            <Image src='/assets/home/desktop/image-hero-phone.png' width="642" height="913" />
+                {!designCase && <Image src='/assets/home/desktop/image-hero-phone.png' width="642" height="913" />}
         </Wrapper>
     )
 }

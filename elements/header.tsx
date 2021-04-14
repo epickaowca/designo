@@ -50,8 +50,12 @@ const LogoDiv = styled.div`
     display: flex;
     & > div{
         &:nth-child(1){
+            cursor: pointer;
             max-width: 200px !important;
             margin-right: 25px !important;
+            &:hover{
+                opacity: .7;
+            }
         }
         &:nth-child(2){
             cursor: pointer;
@@ -124,7 +128,7 @@ const Header:React.FC = () => {
     return (
         <StyledHeader navVisible={navVisible}>
             <LogoDiv>
-                <Image src='/assets/shared/desktop/logo-dark.png' width={404} height={54} alt="designo logo"/>
+                <Link href='/'><Image src='/assets/shared/desktop/logo-dark.png' width={404} height={54} alt="designo logo"/></Link>
                 <Image onClick={()=>setNavVisible(prev=>!prev)} src={navVisible ? '/assets/shared/mobile/icon-close.svg' : '/assets/shared/mobile/icon-hamburger.svg'} width={navVisible ? 20 : 24} height={20} alt={navVisible ? "close navigation" : "open navigation"}/>
             </LogoDiv>
             <StyledNav navVisible={navVisible}>

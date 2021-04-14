@@ -17,48 +17,45 @@ const Wrapper = styled.div<DesignersItemInterface>`
     overflow: hidden;
     cursor: pointer;
     &:hover{
-        & > div{
             & > div{
                 &:nth-child(3){
                     background: rgba(231,129,107,.6);
                 }
             }
-        }
+    }
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    & > h1{
+        z-index: 7;
+        font-weight: 500;
+        margin-bottom: 10px;
+        font-size: 2rem;
     }
     & > div{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        position: relative;
-        width: 100%;
-        height: 100%;
-        & > h1{
+        &:nth-child(2){
             z-index: 7;
-            font-weight: 500;
-            margin-bottom: 10px;
-            font-size: 2rem;
+            display: flex;
+            margin: 0px auto;
+            align-items: center;
+            & > p{
+                margin-right: 15px;
+            }
         }
-        & > div{
-            &:nth-child(2){
-                z-index: 7;
-                display: flex;
-                margin: 0px auto;
-                align-items: center;
-                & > p{
-                    margin-right: 15px;
-                }
-            }
-            &:nth-child(3){
-                z-index: 5;
-                position: absolute;
-                background: rgba(0,0,0,.4);
-                width: 100%;
-                height: 100%;
-                top: 0px;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
-            }
+        &:nth-child(3){
+            z-index: 5;
+            position: absolute;
+            background: rgba(0,0,0,.4);
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
         }
     }
 `
@@ -70,18 +67,16 @@ interface DesignersItemInterface {
 
 const DesignersItem:React.FC<DesignersItemInterface> = ({designCase, onlyTwo}) => {
     return (
-        <Wrapper designCase={designCase} onlyTwo={onlyTwo}>
-            <Link href="#">
+        <Link href={`/${designCase}_design`}>
+            <Wrapper designCase={designCase} onlyTwo={onlyTwo}>
+                <h1>{designCase} design</h1>
                 <div>
-                    <h1>{designCase} design</h1>
-                        <div>
-                            <p>view projects</p>
-                            <Image src='/assets/shared/desktop/icon-right-arrow.svg' width={7} height={10} alt="right arrow" />
-                        </div>
-                    <div></div>
+                    <p>view projects</p>
+                    <Image src='/assets/shared/desktop/icon-right-arrow.svg' width={7} height={10} alt="right arrow" />
                 </div>
-            </Link>
-        </Wrapper>
+                <div></div>
+            </Wrapper>
+        </Link>
     )
 }
 
