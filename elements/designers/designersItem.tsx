@@ -69,7 +69,6 @@ interface DesignersItemInterface {
 }
 
 const DesignersItem:React.FC<DesignersItemInterface> = ({designCase, onlyTwo}) => {
-    console.log(designCase)
     return (
         <Wrapper designCase={designCase} onlyTwo={onlyTwo}>
             <Link href="#">

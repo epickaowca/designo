@@ -32,6 +32,8 @@ const Wrapper = styled.section`
         }
     }
     ${p=>p.theme.media.tablet}{
+        padding-top: 25px;
+        max-width: 900px;
         width: 90%;
         margin: auto;
         margin-top: 40px;
