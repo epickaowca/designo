@@ -27,12 +27,13 @@ interface PortfolioProjectsInterface {
 }
 
 const PortfolioProjects:React.FC<PortfolioProjectsInterface> = ({projects}) => {
-    const howManyEmptyProjects = 3-projects.length%3
+    let howManyEmptyProjects = 3-projects.length%3
+    if(howManyEmptyProjects===3) howManyEmptyProjects = 0
     const epmtyArr = new Array(howManyEmptyProjects).fill({empty: true})
     const projectsArr = [...projects, ...epmtyArr]
     return (
         <Wrapper>
-            {projectsArr.map((item, index)=><ProjectItem key={index} name={item.name} designName={item.designName} description={item.description} empty={item.empty} />)}
+            {projectsArr.map((item, index)=><ProjectItem key={index} name={item.name} designName={item.designName} description={item.description} empty={item.empty} photoname={item.photoname} />)}
         </Wrapper>
     )
 }

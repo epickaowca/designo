@@ -7,12 +7,16 @@ const Wrapper = styled.section<DesignersInterface>`
     margin: auto;
     margin-top: 70px;
     width: 90%;
+    ${p=>p.designCase && `
+    margin-top: -50px;
+    margin-bottom: -165px;
+    `}
     & > div{
         &:nth-child(${p=>p.designCase ? 4 : 1}){
             border-radius: 10px;
             width: 100%;
             height: 200px;
-            margin: 10px auto;
+            margin: 0px auto;
             max-width: 350px;
         }
         &:nth-child(${p=>p.designCase ? 1 : 2}){
@@ -20,12 +24,16 @@ const Wrapper = styled.section<DesignersInterface>`
                 border-radius: 10px;
                 width: 100%;
                 height: 200px;
-                margin: 10px auto;
+                margin: 45px auto;
                 max-width: 350px;
             }
         }
     }
     ${p=>p.theme.media.tablet}{
+        ${p=>p.designCase && `
+        margin-top: -100px;
+        margin-bottom: -30px;
+        `}
         & > div{
             &:nth-child(${p=>p.designCase ? 4 : 1}){
                 max-width: 900px;
@@ -42,6 +50,11 @@ const Wrapper = styled.section<DesignersInterface>`
         justify-content: center;
         max-width: 1500px;
         margin: 130px auto;
+        ${p=>p.theme.media.tablet}{
+            ${p=>p.designCase && `
+            margin-top: 70px;
+            margin-bottom: 0px;
+            `}
         & > div{
             &:nth-child(${p=>p.designCase ? 4 : 1}){
                 width: 50%;

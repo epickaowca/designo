@@ -4,11 +4,15 @@ import Image from 'next/image'
 type WrapperType = {empty:boolean}
 
 const Wrapper = styled.div<WrapperType>`
+cursor: pointer;
 ${p=>p.empty && `visibility: hidden; display: none!important`};
 overflow: hidden;
 border-radius: 15px;
 max-width: 350px;
 margin: 75px auto;
+&:hover{
+    opacity: .7;
+}
 ${p=>p.theme.media.tablet}{
     display: flex;
     max-width: unset;
@@ -55,12 +59,13 @@ interface ProjectItemInterface {
     name?: string
     description?: string
     empty?: boolean
+    photoname?:string
 }
 
-const ProjectItem:React.FC<ProjectItemInterface> = ({name, description, designName, empty}) => {
+const ProjectItem:React.FC<ProjectItemInterface> = ({name, description, designName, empty, photoname}) => {
     return (
         <Wrapper empty={empty}>
-            <Image src={`/assets/${designName}-design/desktop/image-${name}.jpg`} width={700} height={640} alt={empty ? '' : 'portfolioApp'} />
+            <Image src={`/assets/${designName}-design/desktop/image-${photoname ? photoname : name}.jpg`} width={700} height={640} alt={empty ? '' : 'portfolioApp'} />
             <StyledArticle>
                 <h1>{name}</h1>
                 <p>{description}</p>
