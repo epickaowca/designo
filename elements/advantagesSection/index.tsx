@@ -24,6 +24,7 @@ const Wrapper = styled.section`
         margin: auto;
         flex-direction: row;
         justify-content: space-between;
+        margin-top: 100px;
         & > div{
             margin: 0px;
         }
