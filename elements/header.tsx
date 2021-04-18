@@ -133,8 +133,8 @@ const Header:React.FC = () => {
             </LogoDiv>
             <StyledNav navVisible={navVisible}>
                 <Link href='/about'>our company</Link>
-                <Link href='/about'>locations</Link>
-                <Link href='/about'>contact</Link>
+                <Link href='/locations'>locations</Link>
+                <Link href='/contact'>contact</Link>
             </StyledNav>
             <section></section>
         </StyledHeader>

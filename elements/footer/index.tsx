@@ -13,6 +13,9 @@ const StyledFooter = styled.footer<FooterInterface>`
     `}
     display: flex;
     flex-direction: column;
+    ${p=>p.onlyFooter && `
+        margin-top: 180px;
+    `}
 `
 
 export interface FooterInterface {

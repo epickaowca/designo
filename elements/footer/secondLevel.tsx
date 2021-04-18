@@ -132,8 +132,8 @@ const SecondLevel:React.FC<FooterInterface> = ({onlyFooter}) => {
                 <Image src="/assets/shared/desktop/logo-light.png" width={404} height={54} alt="designo logo" />
                 <Nav>
                     <Link href='/about'>our company</Link>
-                    <Link href='/about'>locations</Link>
-                    <Link href='/about'>contact</Link>
+                    <Link href='/locations'>locations</Link>
+                    <Link href='/contact'>contact</Link>
                 </Nav>
             </div>
             <ContactSection>
