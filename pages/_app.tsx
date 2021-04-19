@@ -1,27 +1,39 @@
 import '../styles/globals.css'
-import Head from 'next/head'
+import App from 'next/app'
+import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import { createWrapper } from 'next-redux-wrapper'
+import store from '../redux/store'
 import { myTheme } from '../styles/styles'
+import Head from 'next/head'
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider theme={myTheme}>
-      <Head>
+class MyApp extends App {
+  render(){
+    const { Component, pageProps } = this.props
+    return (
+      <Provider store={store}>
+        <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
             name="description"
-            content="Designo, portfolio"
+            content="invoice-app"
           />    
           <meta name="author" content="MP" />
-          <meta name="keywords" content="designo, designo portfolio, web developer" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet" />
+          <meta name="keywords" content="invoice-app, app for invoice" />
           <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  )
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap" rel="stylesheet" />
+        </Head>
+        <ThemeProvider theme={myTheme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
+    )
+  }
 }
 
-export default MyApp
+const makestore = ()=>store
+const wrapper = createWrapper(makestore)
+
+export default wrapper.withRedux(MyApp)
